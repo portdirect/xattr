@@ -68,7 +68,7 @@ static void convert_bsd_list(char *namebuf, size_t size)
 }
 
 static ssize_t xattr_getxattr(const char *path, const char *name,
-                              void *value, ssize_t size, u_int32_t position,
+                              void *value, ssize_t size, uint32_t position,
                               int options)
 {
     if (position != 0 ||
@@ -87,7 +87,7 @@ static ssize_t xattr_getxattr(const char *path, const char *name,
 }
 
 static ssize_t xattr_setxattr(const char *path, const char *name,
-                              void *value, ssize_t size, u_int32_t position,
+                              void *value, ssize_t size, uint32_t position,
                               int options)
 {
     int rv = 0;
@@ -170,7 +170,7 @@ static ssize_t xattr_listxattr(const char *path, char *namebuf,
 }
 
 static ssize_t xattr_fgetxattr(int fd, const char *name, void *value,
-                               ssize_t size, u_int32_t position, int options)
+                               ssize_t size, uint32_t position, int options)
 {
     if (position != 0 ||
         !(options == 0 || options == XATTR_XATTR_NOFOLLOW)) {
@@ -186,7 +186,7 @@ static ssize_t xattr_fgetxattr(int fd, const char *name, void *value,
 }
 
 static ssize_t xattr_fsetxattr(int fd, const char *name, void *value,
-                               ssize_t size, u_int32_t position, int options)
+                               ssize_t size, uint32_t position, int options)
 {
     int rv = 0;
     int nofollow;
@@ -274,12 +274,12 @@ static ssize_t xattr_flistxattr(int fd, char *namebuf, size_t size, int options)
 #define XATTR_CREATE 0x1
 #define XATTR_REPLACE 0x2
 
-#ifndef u_int32_t
-#define u_int32_t uint32_t
+#ifndef uint32_t
+#define uint32_t uint32_t
 #endif
 
 static ssize_t xattr_fgetxattr(int fd, const char *name, void *value,
-                               ssize_t size, u_int32_t position, int options)
+                               ssize_t size, uint32_t position, int options)
 {
     int xfd;
     ssize_t bytes;
@@ -309,7 +309,7 @@ static ssize_t xattr_fgetxattr(int fd, const char *name, void *value,
 }
 
 static ssize_t xattr_getxattr(const char *path, const char *name,
-                              void *value, ssize_t size, u_int32_t position,
+                              void *value, ssize_t size, uint32_t position,
                               int options)
 {
     int fd;
@@ -332,7 +332,7 @@ static ssize_t xattr_getxattr(const char *path, const char *name,
 }
 
 static ssize_t xattr_fsetxattr(int fd, const char *name, void *value,
-                               ssize_t size, u_int32_t position, int options)
+                               ssize_t size, uint32_t position, int options)
 {
     int xfd;
     ssize_t bytes = 0;
@@ -360,7 +360,7 @@ static ssize_t xattr_fsetxattr(int fd, const char *name, void *value,
 }
 
 static ssize_t xattr_setxattr(const char *path, const char *name,
-                              void *value, ssize_t size, u_int32_t position,
+                              void *value, ssize_t size, uint32_t position,
                               int options)
 {
     int fd;
@@ -463,7 +463,7 @@ static ssize_t xattr_listxattr(const char *path, char *namebuf,
 #define XATTR_XATTR_CREATE 0x0002
 #define XATTR_XATTR_REPLACE 0x0004
 #define XATTR_XATTR_NOSECURITY 0x0008
-static ssize_t xattr_getxattr(const char *path, const char *name, void *value, ssize_t size, u_int32_t position, int options) {
+static ssize_t xattr_getxattr(const char *path, const char *name, void *value, ssize_t size, uint32_t position, int options) {
     if (position != 0 || !(options == 0 || options == XATTR_XATTR_NOFOLLOW)) {
         return -1;
     }
@@ -474,7 +474,7 @@ static ssize_t xattr_getxattr(const char *path, const char *name, void *value, s
     }
 }
 
-static ssize_t xattr_setxattr(const char *path, const char *name, void *value, ssize_t size, u_int32_t position, int options) {
+static ssize_t xattr_setxattr(const char *path, const char *name, void *value, ssize_t size, uint32_t position, int options) {
     int nofollow;
     if (position != 0) {
         return -1;
@@ -518,7 +518,7 @@ static ssize_t xattr_listxattr(const char *path, char *namebuf, size_t size, int
     }
 }
 
-static ssize_t xattr_fgetxattr(int fd, const char *name, void *value, ssize_t size, u_int32_t position, int options) {
+static ssize_t xattr_fgetxattr(int fd, const char *name, void *value, ssize_t size, uint32_t position, int options) {
     if (position != 0 || !(options == 0 || options == XATTR_XATTR_NOFOLLOW)) {
         return -1;
     }
@@ -529,7 +529,7 @@ static ssize_t xattr_fgetxattr(int fd, const char *name, void *value, ssize_t si
     }
 }
 
-static ssize_t xattr_fsetxattr(int fd, const char *name, void *value, ssize_t size, u_int32_t position, int options) {
+static ssize_t xattr_fsetxattr(int fd, const char *name, void *value, ssize_t size, uint32_t position, int options) {
     int nofollow;
     if (position != 0) {
         return -1;
